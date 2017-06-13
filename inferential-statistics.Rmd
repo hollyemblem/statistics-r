@@ -1,0 +1,68 @@
+---
+title: "Inferential Statistics"
+author: "Holly Emblem"
+date: "5 June 2017"
+output: html_document
+---
+
+## Probability Distributions
+
+When performing basic inference, such as creating confidence intervals and calculating p-values, you can use basic inbuilt R operations which help speed up the process.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Normal Distribution
+If you want to find the Z score associated with a probability, you can use qnorm.
+
+```{r}
+qnorm(0.99)
+```
+
+To calculate the p-value associated with a Z score, then you would use pnorm(), with lower.tail=FALSE if you wish to find the probability that a number is larger than a given number.
+
+Find the probability (|Z|>2)
+P Value
+```{r}
+pnorm(2.32, lower.tail = FALSE)
+```
+#T Distribution
+Calculating t*df (t score)  for a two sided distribution at 95% confidence
+
+```{r}
+abs(qt(0.05/2, df=14,lower.tail=TRUE))
+```
+We use (pt(T-distribution,degrees of freedom,lower.tail=FALSE)*2 (*2 for a two-tailed test) to find the p-value for a t-distribution.
+
+P Value
+```{r}
+pt(2.14, df=50, lower.tail= FALSE) * 2
+```
+A further example is provided below. 
+Find the probability P(|t(df=10)|>2) where pt(x) x is t*df.
+P Value
+```{r}
+pt(2, df=10, lower.tail= FALSE) * 2
+```
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
